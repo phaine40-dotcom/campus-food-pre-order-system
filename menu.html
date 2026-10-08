@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Campus Food Menu</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #dae6f0;
+                padding: 20px;
+                margin: 20px;
+            }
+            h1 {
+                color: #333;
+                text-align: center;
+            }
+            .orderList {
+                margin: 20px auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            .order h2 {
+                margin-bottom: 10px;
+            }
+            .order p {
+                font-size: 16px;
+            }
+            button {
+                margin: 10px;
+                cursor: pointer;
+                background-color: #7aa5d2;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            button:hover {
+                opacity: 0.8;
+            }
+            #order-summary {
+                background-color: #fff;
+                padding: 20px;
+                max-width: 300px;
+                margin: 30px auto;
+                border-radius: 10px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            }
+        </style>
+        </head>
+    <body>
+        <h1>Campus Food Menu</h1>
+        <p>Select from the available meals below:</p>
+        <section>
+            <h2>Breakfast</h2>
+            <ul>
+                <li>Pancakes - Ksh 50.00
+                    <button onclick="order('Pancakes', 50,document.getElementById('pancakes-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="pancakes-quantity" onchange="updateQuantity('Pancakes', 50, this.value)"><br><br>
+                <li>Toast - Ksh 30.00
+                    <button onclick="order('Toast', 30,document.getElementById('toast-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="toast-quantity" onchange="updateQuantity('Toast', 30, this.value)"><br><br>
+                <li>Omelette - Ksh 65.00
+                    <button onclick="order('Omelette', 65,document.getElementById('omelette-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="omelette-quantity" onchange="updateQuantity('Omelette', 65, this.value)"><br><br>
+                    <li>Fruit Salad - Ksh 40.00
+                    <button onclick="order('Fruit Salad', 40,document.getElementById('fruit-salad-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="fruit-salad-quantity" onchange="updateQuantity('Fruit Salad', 40, this.value)"><br><br>
+                    <li>Tea - Ksh 20.00
+                    <button onclick="order('Tea', 20,document.getElementById('tea-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="tea-quantity" onchange="updateQuantity('Tea', 20, this.value)"><br><br>
+                <li>Coffee - Ksh 25.00
+                    <button onclick="order('Coffee', 25,document.getElementById('coffee-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="coffee-quantity" onchange="updateQuantity('Coffee', 25, this.value)"><br><br>
+            </ul>
+            </section>
+            <section>
+            <h2>Lunch</h2>
+            <ul>
+                <li>Chicken Accessory - Ksh 180.00
+                    <button onclick="order('Chicken Accessory', 180,document.getElementById('chicken-accessory-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="chicken-accessory-quantity" onchange="updateQuantity('Chicken Accessory', 180, this.value)"><br><br>
+                <li>Ugali and Beef - Ksh 100.00
+                    <button onclick="order('Ugali and Beef', 100,document.getElementById('ugali-and-beef-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="ugali-and-beef-quantity" onchange="updateQuantity('Ugali and Beef', 100, this.value)"><br><br>
+                <li>Pilau - Ksh 120.00
+                    <button onclick="order('Pilau', 120,document.getElementById('pilau-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="pilau-quantity" onchange="updateQuantity('Pilau', 120, this.value)"><br><br>
+                <li>Rice and Beans - Ksh 80.00
+                    <button onclick="order('Rice and Beans', 80,document.getElementById('rice-and-beans-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="rice-and-beans-quantity" onchange="updateQuantity('Rice and Beans', 80, this.value)"><br><br>
+                <li>Fruit Juice - Ksh 35.00
+                    <button onclick="order('Fruit Juice', 35,document.getElementById('fruit-juice-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="fruit-juice-quantity" onchange="updateQuantity('Fruit Juice', 35, this.value)"><br><br>
+                <li>Chapati and Ndengu - Ksh 90.00
+                    <button onclick="order('Chapati and Ndengu', 90,document.getElementById('chapati-and-ndengu-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="chapati-and-ndengu-quantity" onchange="updateQuantity('Chapati and Ndengu', 90, this.value)"><br><br>
+            </ul>      
+            </section>
+            <section>
+            <h2>Dinner</h2>
+            <ul>
+                <li>Beef Stew and Rice/Ugali - Ksh 150.00
+                    <button onclick="order('Beef Stew and Rice/Ugali', 150,document.getElementById('beef-stew-and-rice-ugali-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="beef-stew-and-rice-ugali-quantity" onchange="updateQuantity('Beef Stew and Rice/Ugali', 150, this.value)"><br><br>
+                <li>Chicken Curry - Ksh 160.00
+                    <button onclick="order('Chicken Curry', 160,document.getElementById('chicken-curry-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="chicken-curry-quantity" onchange="updateQuantity('Chicken Curry', 160, this.value)"><br><br>
+                <li>Vegetable Stir Fry - Ksh 120.00
+                    <button onclick="order('Vegetable Stir Fry', 120,document.getElementById('vegetable-stir-fry-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="vegetable-stir-fry-quantity" onchange="updateQuantity('Vegetable Stir Fry', 120, this.value)"><br><br>
+                <li>Fish Fillet - Ksh 200.00
+                    <button onclick="order('Fish Fillet', 200,document.getElementById('fish-fillet-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="fish-fillet-quantity" onchange="updateQuantity('Fish Fillet', 200, this.value)"><br><br>
+                <li>Mashed Potatoes - Ksh 70.00
+                    <button onclick="order('Mashed Potatoes', 70,document.getElementById('mashed-potatoes-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="mashed-potatoes-quantity" onchange="updateQuantity('Mashed Potatoes', 70, this.value)"><br><br>
+                <li>Rice and Lentils - Ksh 100.00
+                    <button onclick="order('Rice and Lentils', 100,document.getElementById('rice-and-lentils-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="rice-and-lentils-quantity" onchange="updateQuantity('Rice and Lentils', 100, this.value)"><br><br>
+            </ul>
+            </section>
+            <section>
+            <h2>Drinks</h2>
+            <ul>
+                <li>Soda - Ksh 80.00
+                    <button onclick="order('Soda', 80,document.getElementById('soda-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="soda-quantity" onchange="updateQuantity('Soda', 80, this.value)"><br><br>
+                <li>Water - Ksh 50.00
+                    <button onclick="order('Water', 50,document.getElementById('water-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="water-quantity" onchange="updateQuantity('Water', 50, this.value)"><br><br>
+                <li>Milkshake - Ksh 70.00
+                    <button onclick="order('Milkshake', 70,document.getElementById('milkshake-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="milkshake-quantity" onchange="updateQuantity('Milkshake', 70, this.value)"><br><br>
+                <li>Delmonte - Ksh 210.00
+                    <button onclick="order('Delmonte', 210,document.getElementById('delmonte-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="delmonte-quantity" onchange="updateQuantity('Delmonte', 210, this.value)"><br><br>
+                <li>Minute Maid - Ksh 80.00
+                    <button onclick="order('Minute Maid', 80,document.getElementById('minute-maid-quantity').value)">Order</button></li>
+                    <input type="number" min="1" value="1" id="minute-maid-quantity" onchange="updateQuantity('Minute Maid', 80, this.value)"><br><br>
+            </ul>
+            </section>
+            <section id="order-summary">
+            <h2>Your Order</h2>
+            <div id="orderList"></div>
+            <p><strong>Total: Ksh <span id="totalAmount">0</span></strong></p>
+            <button onclick="clearOrder()">Clear Order</button><br><br>
+            </section>
+            <section id="confirmationSection">
+                <h2>Order Confirmation</h2>
+                <p>Your order is ready for confirmation!</p>
+                <p>
+                    <strong>Order Status:</strong><br>
+                    <span id="orderStatus">Pending</span>
+                </p>
+                <button onclick="confirmOrder()">Confirm Order</button><br><br>
+                <button onclick="checkout()">Checkout</button>
+            </section>
+            <script src="script.js"></script>
+        </body>
+        </html>
