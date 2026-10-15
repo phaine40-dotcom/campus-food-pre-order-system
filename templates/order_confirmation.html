@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Confirmation</title>
+    </head>
+    <body>
+        <h1>Order Confirmed!</h1>
+        <p>Your food order has been received successfully.</p>
+        
+        <h2>Order Details</h2>
+        <p>Order Number: {{ order_id }}</p>
+        {% for item in items %}
+        <p>{{ item.name }} x {{ item.quantity }} = KSh {{ "%.2f"|format(item.total) }}</p>
+        {% endfor %}
+        <p>Total: KSh {{ "%.2f"|format(total_price) }}</p>
+
+        <p>Order Status: Pending</p>
+
+        <a href="{{url_for('menu')}}">Back to Menu</a>
+    </body>
+</html>

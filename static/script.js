@@ -38,7 +38,18 @@ function checkout() {
         alert("Your order is empty. Please add items to your order before checking out.");
         return;
     }
-    alert("Proceeding to checkout.");
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/checkout";
+
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "cart_data";
+    input.value = JSON.stringify(orderList);
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
 }
 function confirmOrder() {
     if (orderList.length === 0) {

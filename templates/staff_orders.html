@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cafeteria Staff - Incoming Orders</title>
+        <style>
+            body{
+                font-family:Arial, sans-serif;
+                margin:30px;
+                background-color:#9fbfdf;
+            }
+            h1{
+                color:#263238;
+            }
+            .order-card{
+                background:white;
+                padding:18px;
+                margin-bottom:18px;
+                border-radius:8px;
+                box-shadow:0 2px 5px #00000015;
+            }
+            .order-card h2{
+                margin:0;
+            }
+            .status{
+                font-weight:bold;
+                color:#176b3a;
+            }
+            .empty{
+                background:white;
+                padding:18px;
+                border-radius:8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Cafeteria Staff Dashboard</h1>
+        <p>View incoming student food orders below.</p>
+
+        {% if orders %}
+            {% for order in orders %}
+                <div class="order-card">
+                    <h2>Order #{{ order['id'] }}</h2>
+
+                    <p><strong>Student:</strong>
+                        {{ order['full_name'] }}</p>
+
+                    <p><strong>Food:</strong>
+                        {{ order['food_name'] }}</p>
+
+                    <p><strong>Quantity:</strong>
+                        {{ order['quantity'] }}</p>
+
+                    <p><strong>Total:</strong>
+                        KSh {{ "%.2f"|format(order['total_price']) }}</p>
+
+                    <p><strong>Date:</strong>
+                        {{ order['order_date'] }}</p>
+
+                    <p class="status">
+                        Status: {{ order['status'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty">
+                <p>No orders have been placed yet.</p>
+            </div>
+        {% endif %}
+    </body>
+</html>
